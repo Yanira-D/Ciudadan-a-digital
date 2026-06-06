@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Quicksand", sans-serif;
+
+  --color-brand-primary: #8f4b41;
+  --color-brand-coral: #FCA699;
+  --color-brand-purple: #583B7E;
+  --color-brand-yellow: #FFE4AA;
+  --color-brand-mauve: #C9729F;
+  --color-brand-rose: #E2869B;
+  --color-brand-surface: #fff8f2;
+  --color-brand-bg: #FFE4AA;
+}
+
+body {
+  background-color: var(--color-brand-bg);
+  font-family: var(--font-sans);
+  color: #251a00;
+  min-height: 100vh;
+  margin: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 5s ease-in-out infinite;
+}
+
+.tactile-press {
+  transition: all 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tactile-press:active {
+  transform: translateY(2px);
+}
+
+.glow-selected {
+  box-shadow: 0 0 15px rgba(252, 166, 153, 0.4);
+}
