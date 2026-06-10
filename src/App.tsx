@@ -165,7 +165,7 @@ export default function App() {
   // Auto-trigger motivational overlay
   useEffect(() => {
     const timer = setTimeout(() => {
-      setToastMessage("¡Santi, tu guía digital te saluda! Sigue sumando décimas en tu Senda Digital 🐻🎒");
+      setToastMessage("¡Santi, tu guía digital te saluda! Sigue sumando décimas en tu Senda Digital🎒");
     }, 4000);
     return () => clearTimeout(timer);
   }, []);
@@ -210,7 +210,7 @@ export default function App() {
         })
       );
     } else {
-      triggerToast(`¡Ayayay! Santi te ha dejado una sugerencia de andamiaje 🐻`);
+      triggerToast(`¡Ayayay! Santi te ha dejado una sugerencia de andamiaje`);
     }
 
     setScenarioAttempts((prev) => prev + 1);
@@ -600,14 +600,14 @@ export default function App() {
               <div className="bg-brand-yellow/15 border border-brand-yellow/50 rounded-2xl p-4 relative flex gap-3 shadow-inner">
                 <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-brand-coral bg-brand-yellow/50 flex-shrink-0 float-animation">
                   <img 
-                    alt="Santi el Oso" 
+                    alt="Santi tu guía digital" 
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuuzyc6bMMWsN-kMq9S70pNsXAzbswB68j92pPDIeoXNYMzD6nK06ghY_AhFAjdfNhIQHRNbNaqjAkqxImdf5nLfAAkxAvpNQKgoA9Rc-nyeFCxJ9CACZ8rCBG0natBaAbZvl3-pL31AT90VUYZDCVpmDX2xxGlwdp0LmbitQMdsuykwlJHEuzpAgEo0JaDlIRkYpVY5FoY_ADdT1EhL4SltcOrQxgQjlvxPQFFmO45R4Fv37jxbdhkujUwi8lutAYZA2EX-ZwpPAi6Q"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xs font-bold text-brand-purple uppercase tracking-wider font-display">Tutor Santi el Oso dice:</p>
+                  <p className="text-xs font-bold text-brand-purple uppercase tracking-wider font-display">Tutor Santi Dice:</p>
                   <p className="text-xs font-medium text-brand-purple leading-relaxed italic">
                     "¡Vea pues guagua! Cada reto resuelto con empatía nos protege de peligros y nos acerca a la cima del volcán Galeras."
                   </p>
@@ -807,7 +807,7 @@ export default function App() {
                       </div>
                       <div className="space-y-1.5">
                         <span className="font-display font-bold uppercase tracking-wider text-[11px] block text-brand-purple">
-                          Explicación de Santi el Oso:
+                          Explicación de Tutor Santi:
                         </span>
                         <p className="font-semibold text-slate-700 font-sans italic">
                           {quizScenarios[selectedScenarioIndex].options[selectedOption].feedback}
@@ -883,7 +883,7 @@ export default function App() {
                 </div>
 
                 <p className="text-[11px] font-medium text-slate-600 leading-snug">
-                  Escribe tu propia respuesta constructiva para ayudar a {quizScenarios[selectedScenarioIndex].sender.split(" ")[0]} y pon a prueba a nuestra Inteligencia Artificial escolar de Santi el Oso.
+                  Escribe tu propia respuesta constructiva para ayudar a {quizScenarios[selectedScenarioIndex].sender.split(" ")[0]} y pon a prueba a nuestra Inteligencia Artificial escolar del Tutor Santi.
                 </p>
 
                 <div className="relative">

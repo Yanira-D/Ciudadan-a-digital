@@ -1,6 +1,6 @@
 {
   "name": "Senda Digital",
-  "description": "Plataforma educativa interactiva sobre Netiqueta y Ciudadanía Digital para grado sexto, guiada por Santi el oso de anteojos y el cuy explorador en Pasto, Colombia.",
+  "description": "Plataforma educativa interactiva sobre Netiqueta y Ciudadanía Digital para grado sexto, guiada por Santi el cuy explorador en Pasto, Colombia.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
