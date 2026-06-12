@@ -8,6 +8,7 @@ import {
   ShieldCheck,
   Lock,
   ArrowRight,
+  ArrowLeft,
   Search,
   Filter,
   Trophy,
@@ -778,6 +779,20 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-6"
             >
+              {/* Navigation Back & Switcher Section */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-brand-surface rounded-xl p-3 border border-brand-yellow/50 shadow-sm">
+                <button
+                  onClick={() => setActiveTab("inicio")}
+                  className="flex items-center gap-1.5 text-xs font-bold text-brand-purple hover:text-brand-primary cursor-pointer transition-all bg-brand-yellow/15 hover:bg-brand-yellow/30 px-3 py-2 rounded-lg border border-brand-yellow/40 self-start tactile-press"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5 text-brand-coral animate-pulse" />
+                  <span>Regresar a la Senda (Inicio)</span>
+                </button>
+                <div className="text-xs font-semibold text-slate-500">
+                  Estás en: <span className="font-bold text-brand-purple">Unidad {selectedScenarioIndex + 1} de {quizScenarios.length}</span>
+                </div>
+              </div>
+
               {/* Scenario switcher header */}
               <div className="flex items-center justify-between">
                 <h3 className="font-display font-extrabold text-brand-purple text-base">
@@ -1291,41 +1306,41 @@ export default function App() {
           {/* Tab 1: Inicio */}
           <button
             onClick={() => setActiveTab("inicio")}
-            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none ${
-              activeTab === "inicio" ? "text-brand-purple" : "text-slate-400 hover:text-slate-600"
+            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none cursor-pointer tactile-press ${
+              activeTab === "inicio" ? "text-brand-purple font-black scale-105" : "text-slate-400 hover:text-slate-600 font-semibold"
             }`}
           >
             <CompassIcon className="w-5.5 h-5.5 mb-1" />
-            <span className="font-display font-bold text-[11px]">Inicio</span>
+            <span className="font-display text-[11px]">Inicio</span>
           </button>
 
           {/* Tab 2: Lecciones */}
           <button
             onClick={() => setActiveTab("lecciones")}
-            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none ${
-              activeTab === "lecciones" ? "text-brand-purple" : "text-slate-400 hover:text-slate-600"
+            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none cursor-pointer tactile-press ${
+              activeTab === "lecciones" ? "text-brand-purple font-black scale-105" : "text-slate-400 hover:text-slate-600 font-semibold"
             }`}
           >
             <BookOpen className="w-5.5 h-5.5 mb-1" />
-            <span className="font-display font-bold text-[11px]">Lecciones</span>
+            <span className="font-display text-[11px]">Lecciones</span>
           </button>
 
           {/* Tab 3: Ranking */}
           <button
             onClick={() => setActiveTab("ranking")}
-            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none ${
-              activeTab === "ranking" ? "text-brand-purple" : "text-slate-400 hover:text-slate-600"
+            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none cursor-pointer tactile-press ${
+              activeTab === "ranking" ? "text-brand-purple font-black scale-105" : "text-slate-400 hover:text-slate-600 font-semibold"
             }`}
           >
             <Trophy className="w-5.5 h-5.5 mb-1" />
-            <span className="font-display font-bold text-[11px]">Ranking</span>
+            <span className="font-display text-[11px]">Ranking</span>
           </button>
 
           {/* Tab 4: Perfil */}
           <button
             onClick={() => setActiveTab("perfil")}
-            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none ${
-              activeTab === "perfil" ? "text-brand-purple bg-brand-purple/10 px-1 rounded-xl" : "text-slate-400 hover:text-slate-600"
+            className={`flex flex-col items-center justify-center flex-1 h-full select-none outline-none cursor-pointer tactile-press ${
+              activeTab === "perfil" ? "text-brand-purple bg-brand-purple/10 px-2 rounded-xl font-black scale-105" : "text-slate-400 hover:text-slate-600 font-semibold"
             }`}
           >
             <User className="w-5.5 h-5.5 mb-1" />
