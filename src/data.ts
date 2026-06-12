@@ -184,6 +184,36 @@ export const quizScenarios: QuizScenario[] = [
         isCorrect: false
       }
     ]
+  },
+  {
+    id: "cima",
+    title: "Lección: Cima del Galeras",
+    sender: "Tutor Santi 🐹🎒",
+    messageText: "¡Urcutaita, mi guagua! Has subido con éxito la Senda de la Amabilidad, los Derechos y la Seguridad Digital. Ahora nos encontramos en el cráter de nuestro majestuoso Volcán Galeras, donde sopla el viento limpio de la sabiduría digital. Para consolidar tu camino y coronarte como un Súper Ciudadano Digital, respóndeme con el compromiso ético definitivo que llevarás a tu vida real.",
+    questionText: "¿Cuál es tu compromiso definitivo como Súper Ciudadano Digital de Pasto?",
+    options: [
+      {
+        text: "Prometo usar internet para divertirme con juegos, publicar burlas y evadir las reglas del colegio.",
+        points: -25,
+        tenths: 0,
+        feedback: "¡Achichay, no! El humor nunca debe herir ni pisotear la dignidad de tus compañeros. Un Súper Ciudadano digital siempre construye paz y respeto interactivo.",
+        isCorrect: false
+      },
+      {
+        text: "Me comprometo a comunicarme con empatía y respeto, citar correctamente las obras de los autores locales, resguardar mi contraseña como un escudo sagrado y reportar los peligros de la red.",
+        points: 50,
+        tenths: 0.5,
+        feedback: "¡Magistral, mi guagua! Has coronado la cumbre del Galeras. Con este juramento de honor, te has ganado el Certificado de Súper Ciudadano Digital de Pasto Nariño. ¡Qué orgullo para tu institución y para mí!",
+        isCorrect: true
+      },
+      {
+        text: "Mejor me comprometo a no usar nunca más internet ni celular para así evitar equivocarme en los chats grupales.",
+        points: -10,
+        tenths: 0,
+        feedback: "Escaparse de la tecnología no es la senda ideal. El internet es un territorio de aprendizaje maravilloso si lo habitamos con discernimiento ético andino.",
+        isCorrect: false
+      }
+    ]
   }
 ];
 

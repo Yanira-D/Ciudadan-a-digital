@@ -42,7 +42,7 @@ app.post("/api/evaluate-netiquette", async (req, res) => {
 
   if (client) {
     try {
-      const systemPrompt = `Eres 'Santi', el Oso de Anteojos andino, mentor y pedagogo de netiqueta y ciudadanía digital para niños de grado 6to de educación básica (11-12 años) en la ciudad de Pasto, Nariño, Colombia.
+      const systemPrompt = `Eres 'Santi', el Cuy Explorador andino, mentor y pedagogo de netiqueta y ciudadanía digital para niños de grado 6to de educación básica (11-12 años) en la ciudad de Pasto, Nariño, Colombia.
 Tu estilo de comunicación debe ser sumamente pedagógico, empático, motivador y dulce, usando sutilmente vocablos y modismos cultos del léxico nariñense/pastuso como '¡guagua!', '¡vea pues!', '¡achichay!' o 'ayayay' con respeto y cercanía.
 Debes evaluar un mensaje redactado por un estudiante de sexto grado en un chat simulado.
 
@@ -108,7 +108,7 @@ Sigue estrictamente las siguientes reglas pedagógicas:
     isCorrect = false;
     points = -20;
     tenths = 0.0;
-    feedback = "¡Ayayay, guagua! Veo que has escrito todo en MAYÚSCULAS sostenidas. Santiago el oso de anteojos recuerda que escribir así en internet equivale a pararse en mitad del volcán Galeras a gritarle en la cara a tu compañero. El diálogo amigable se escribe con minúsculas.";
+    feedback = "¡Ayayay, guagua! Veo que has escrito todo en MAYÚSCULAS sostenidas. Tutor Santi recuerda que escribir así en internet equivale a pararse en mitad del volcán Galeras a gritarle en la cara a tu compañero. El diálogo amigable se escribe con minúsculas.";
     thought = "Marcado incorrecto debido a uso de mayúsculas sostenidas interpretadas como gritos en el sistema educativo.";
   } else if (containsInsult) {
     isCorrect = false;
@@ -130,6 +130,9 @@ Sigue estrictamente las siguientes reglas pedagógicas:
     } else if (scenarioId === "legalidad") {
       feedback = "¡Urcutaita, qué brisita tan fresca del Valle de Atriz! Sugerir citar al fotógrafo del Galeras o buscar licencias Creative Commons demuestra una alta madurez ética e intelectual como ciudadano digital. ¡Sigue así, guagua!";
       thought = "El alumno sugirió licencias o atribución correcta de derechos de autor.";
+    } else if (scenarioId === "cima") {
+      feedback = "¡Magistral, mi guagua! Has coronado la cumbre del Galeras. Con este juramento de honor, te has ganado el Certificado de Súper Ciudadano Digital de Pasto. ¡Qué orgullo para tu institución y para mí!";
+      thought = "El alumno completó con éxito el juramento ético final.";
     } else {
       feedback = "¡Vea pues, qué amabilidad! Respondes con la empatía de un líder constructor de paz interactiva. Tus palabras guían a tu compañero con andamiaje de respeto y solidaridad. ¡Has ganado 50 puntos de Netiqueta!";
       thought = "Satisface los criterios generales de amabilidad y cortesía digital.";

@@ -155,6 +155,7 @@ export default function App() {
 
   // Tenths Redemption Modal State
   const [showRedeemModal, setShowRedeemModal] = useState(false);
+  const [showCertificateModal, setShowCertificateModal] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState("Tecnología e Informática");
   const [tenthsToRedeem, setTenthsToRedeem] = useState(1.0);
   const [redemptionSuccess, setRedemptionSuccess] = useState(false);
@@ -209,6 +210,35 @@ export default function App() {
           return les;
         })
       );
+
+      // Unlock badge if it is the Cima del Galeras (index 3)
+      if (selectedScenarioIndex === 3) {
+        setBadges((prev) =>
+          prev.map((b) => {
+            if (b.id === "senda_secreta") {
+              return {
+                ...b,
+                title: "Súper Ciudadano",
+                subtitle: "Senda Completada",
+                status: "unlocked",
+                borderCol: "border-emerald-500",
+                bgCol: "bg-emerald-500/15",
+                iconCol: "text-emerald-500",
+                icon: "CheckCircle2"
+              };
+            }
+            return b;
+          })
+        );
+        setProfile((prev) => ({
+          ...prev,
+          progressPercentage: 100,
+          levelName: "Súper Ciudadano Digital",
+        }));
+        setTimeout(() => {
+          setShowCertificateModal(true);
+        }, 1500);
+      }
     } else {
       triggerToast(`¡Ayayay! Santi te ha dejado una sugerencia de andamiaje`);
     }
@@ -700,6 +730,31 @@ export default function App() {
                   })}
                 </div>
               </div>
+
+              {lessons[3]?.status === "completed" && (
+                <motion.div
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="p-5 rounded-2xl bg-gradient-to-r from-brand-yellow/30 via-brand-coral/25 to-brand-primary/20 border-2 border-brand-yellow text-center space-y-3.5 shadow-md"
+                >
+                  <Award className="w-12 h-12 text-brand-purple mx-auto animate-bounce" />
+                  <div>
+                    <h3 className="font-display font-extrabold text-brand-purple text-base">
+                      ¡Felicidades, Súper Ciudadano Digital!
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-700 leading-snug mt-1 text-center">
+                      Has coronado la cima del volcán Galeras y completado toda la Senda Digital. Tu sabiduría e integridad brillan con luz propia.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setShowCertificateModal(true)}
+                    className="w-full h-11 bg-brand-purple hover:bg-opacity-95 font-display font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all text-white cursor-pointer shadow-md tactile-press"
+                  >
+                    <Award className="w-4 h-4 text-brand-yellow animate-pulse" />
+                    <span>Ver mi Diploma de Honor 🏆</span>
+                  </button>
+                </motion.div>
+              )}
 
               {/* Big primary CTA to current lesson */}
               <button
@@ -1207,7 +1262,7 @@ export default function App() {
               </div>
 
               {/* ACTION BUTTON -> REDEEM DECIMAS TRANSFERRED TO SCHOOL GRADES */}
-              <div className="pt-2">
+              <div className="pt-2 space-y-3">
                 <button
                   onClick={() => setShowRedeemModal(true)}
                   className="w-full h-12 bg-brand-coral hover:bg-brand-primary text-white font-display font-extrabold text-xs tracking-wider uppercase rounded-xl shadow-md flex items-center justify-center gap-2 border-b-4 border-brand-primary bg-opacity-95 transition-all cursor-pointer tactile-press"
@@ -1215,6 +1270,16 @@ export default function App() {
                   <Coins className="w-4 h-4 animate-bounce" />
                   <span>Canjear mis décimas</span>
                 </button>
+
+                {lessons[3]?.status === "completed" && (
+                  <button
+                    onClick={() => setShowCertificateModal(true)}
+                    className="w-full h-12 bg-gradient-to-r from-brand-yellow to-brand-coral hover:from-brand-coral hover:to-brand-yellow text-brand-purple font-display font-extrabold text-xs tracking-wider uppercase rounded-xl shadow-md flex items-center justify-center gap-2 border-2 border-brand-yellow transition-all cursor-pointer tactile-press"
+                  >
+                    <Award className="w-4.5 h-4.5 text-brand-purple" />
+                    <span>Ver mi Diploma de Súper Ciudadano 🏆</span>
+                  </button>
+                )}
               </div>
             </motion.div>
           )}
@@ -1372,6 +1437,101 @@ export default function App() {
               </motion.div>
             </motion.div>
           )}
+
+          {/* CERTIFICATE MODAL */}
+          {showCertificateModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-brand-purple bg-opacity-50 flex items-center justify-center p-4 z-50 backdrop-blur-sm print:relative print:bg-white print:p-0 print:m-0 print:inset-auto"
+              onClick={() => setShowCertificateModal(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="w-full max-w-sm bg-white rounded-2xl p-6 space-y-4 border-2 border-brand-yellow flex flex-col shadow-2xl relative overflow-hidden print:shadow-none print:border-none print:p-0"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button hidden in print */}
+                <button
+                  onClick={() => setShowCertificateModal(false)}
+                  className="absolute top-4 right-4 p-1 h-7 w-7 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 print:hidden z-10 cursor-pointer"
+                >
+                  <X className="w-4 h-4 mx-auto" />
+                </button>
+
+                {/* Sparkling Background Accent decoration */}
+                <div className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[radial-gradient(#dca54c_2px,transparent_2px)] bg-[size:10px_10px]"></div>
+
+                {/* Certificate Border Frame */}
+                <div className="border-4 border-dashed border-[#FCA699] rounded-xl p-4 text-center space-y-3.5 relative bg-[#FCFBF7]">
+                  <div className="absolute top-2 right-2 text-brand-rose print:hidden">
+                    <Sparkles className="w-5 h-5 animate-pulse" />
+                  </div>
+                  
+                  {/* Badge emblem */}
+                  <div className="w-14 h-14 rounded-full bg-brand-yellow bg-opacity-45 flex items-center justify-center mx-auto border-2 border-brand-primary">
+                    <Award className="w-8 h-8 text-brand-purple" />
+                  </div>
+
+                  <div>
+                    <h3 className="font-display font-black text-brand-purple text-base tracking-wide uppercase leading-tight">
+                      Diploma de Honor
+                    </h3>
+                    <p className="text-[10px] font-extrabold text-[#8f4b41] uppercase tracking-widest mt-1">
+                      Súper Ciudadano Digital
+                    </p>
+                  </div>
+
+                  <div className="space-y-1.5 py-1">
+                    <p className="text-[10px] text-slate-500 font-medium">Otorgado con gran orgullo pastuso a:</p>
+                    
+                    {/* Editable / View Name */}
+                    <input
+                      type="text"
+                      value={profile.name}
+                      onChange={(e) => setProfile(prev => ({ ...prev, name: e.target.value }))}
+                      className="w-full text-center bg-transparent border-b border-brand-coral py-0.5 text-base font-extrabold text-[#583B7E] font-display hover:border-[#8f4b41] focus:border-[#8f4b41] focus:ring-0 outline-none print:border-none leading-none select-all"
+                      placeholder="Escribe tu nombre completo"
+                      title="Haz clic para cambiar el nombre en el diploma"
+                    />
+                    
+                    <p className="text-[9px] text-slate-500 font-semibold italic mt-1 leading-snug px-3">
+                      "Por haber escalado con éxito la Senda Digital, asumiendo con honor el compromiso ético de la netiqueta, el respeto mutuo, y la seguridad interactiva en sexto grado."
+                    </p>
+                  </div>
+
+                  {/* Seals / Footers */}
+                  <div className="pt-2 border-t border-brand-yellow flex justify-between items-end">
+                    <div className="text-left">
+                      <p className="text-[10px] font-extrabold text-brand-purple font-display">{profile.grade}</p>
+                      <p className="text-[8px] text-slate-400 font-bold">Pasto, Nariño, Colombia</p>
+                    </div>
+                    <div className="text-right flex flex-col items-center">
+                      {/* Santiago Cuy Sign */}
+                      <span className="font-display text-brand-purple font-bold text-[10px] italic leading-none">Tutor Cuy Santi 🐹</span>
+                      <div className="w-11 h-[1px] bg-slate-300 my-1"></div>
+                      <p className="text-[8px] text-slate-400 font-bold">Líder y Orientador</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Print action CTA */}
+                <button
+                  onClick={() => window.print()}
+                  className="w-full h-11 bg-[#583B7E] text-white hover:bg-opacity-95 font-display font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition-all text-white cursor-pointer print:hidden shadow-md tactile-press"
+                >
+                  <Award className="w-4 h-4 text-brand-yellow" />
+                  <span>Imprimir / Guardar Diploma 🖨️</span>
+                </button>
+                <p className="text-[9px] text-center text-slate-400 font-semibold leading-normal print:hidden">
+                  * Haz clic sobre tu nombre en el diploma para editarlo antes de imprimir. Elige "Guardar como PDF" en tu navegador.
+                </p>
+              </motion.div>
+            </motion.div>
+          )}
         </AnimatePresence>
           </>
         )}
@@ -1390,6 +1550,8 @@ function renderBadgeIcon(iconName: string, iconCol: string) {
       return <Flame className={`w-6 h-6 ${iconCol}`} />;
     case "ShieldCheck":
       return <ShieldCheck className={`w-6 h-6 ${iconCol}`} />;
+    case "CheckCircle2":
+      return <CheckCircle2 className={`w-6 h-6 ${iconCol}`} />;
     default:
       return <Lock className={`w-5 h-5 ${iconCol}`} />;
   }
